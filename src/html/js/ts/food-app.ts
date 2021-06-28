@@ -5,6 +5,20 @@ class Score {
     // スコアは1つのインスタンスだけにする。毎回newするのはだめ。シングルトンパターン
     private static instance: Score;
 
+    // Scoreインスタンスは1つまでしか生成したくないのでシングルトンパターンにするためにprivateを付ける
+    private constructor() { }
+
+    /**
+     * シングルトンパターンのためのメソッド
+     */
+    static getInstance() {
+        // インスタンスがなければ生成する、あれば生成しない
+        if(!Score.instance) {
+            Score.instance = new Score();
+        }
+        return Score.instance;
+    }
+
     /**
      * 合計値を算出するゲッタープロパティ
      */
@@ -20,21 +34,8 @@ class Score {
     render() {
         document.querySelector('.score__number')!.textContent = String(this.totalScore);
     }
-
-    // Scoreインスタンスは1つまでしか生成したくないのでシングルトンパターンにするためにprivateを付ける
-    private constructor() { }
-
-    /**
-     * シングルトンパターンのためのメソッド
-     */
-    static getInstance() {
-        // インスタンスがなければ生成する、あれば生成しない
-        if(!Score.instance) {
-            Score.instance = new Score();
-        }
-        return Score.instance;
-    }
 }
+
 
 /**
  * 　食べ物単体を表すクラス
@@ -61,6 +62,7 @@ class Food {
     }
 }
 
+
 /**
  * 食べ物全般を表すクラス
  */
@@ -69,11 +71,30 @@ class Foods {
     private static instance : Foods;
     // クラスがfoodのdomを取得する。<HTMLDivElement>とすることでdivタグの要素を取得できる
     elements = document.querySelectorAll<HTMLDivElement>('.food');
-
     // 今アクティブになっている要素を格納する箱
     private _activeElements: HTMLDivElement[] = [];
     // 今アクティブになっている要素のスコアを格納する箱
     private _activeElementsScore: number[] = [];
+
+    // Foodsインスタンスは1つまでしか生成したくないのでシングルトンパターンにするためにprivateを付ける
+    private constructor() {
+        // dom一つずつ処理。
+        this.elements.forEach(element => {
+            // Foodクラスでクリックイベントを追加する
+            new Food(element);
+        })
+    }
+
+    /**
+     * シングルトンパターンのためのメソッド
+     */
+    static getInstance() {
+        // インスタンスがなければ生成する、あれば生成しない
+        if (!Foods.instance) {
+            Foods.instance = new Foods();
+        }
+        return Foods.instance;
+    }
 
     /**
      * アクティブなfood要素を取得するゲッタープロパティ。
@@ -103,26 +124,6 @@ class Foods {
             }
         });
         return this._activeElementsScore;
-    }
-
-    // Foodsインスタンスは1つまでしか生成したくないのでシングルトンパターンにするためにprivateを付ける
-    private constructor() {
-        // dom一つずつ処理。
-        this.elements.forEach(element => {
-            // Foodクラスでクリックイベントを追加する
-            new Food(element);
-        })
-    }
-
-    /**
-     * シングルトンパターンのためのメソッド
-     */
-    static getInstance() {
-        // インスタンスがなければ生成する、あれば生成しない
-        if (!Foods.instance) {
-            Foods.instance = new Foods();
-        }
-        return Foods.instance;
     }
 }
 

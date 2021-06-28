@@ -6,6 +6,16 @@ class Score {
     // Scoreインスタンスは1つまでしか生成したくないのでシングルトンパターンにするためにprivateを付ける
     constructor() { }
     /**
+     * シングルトンパターンのためのメソッド
+     */
+    static getInstance() {
+        // インスタンスがなければ生成する、あれば生成しない
+        if (!Score.instance) {
+            Score.instance = new Score();
+        }
+        return Score.instance;
+    }
+    /**
      * 合計値を算出するゲッタープロパティ
      */
     get totalScore() {
@@ -18,16 +28,6 @@ class Score {
      */
     render() {
         document.querySelector('.score__number').textContent = String(this.totalScore);
-    }
-    /**
-     * シングルトンパターンのためのメソッド
-     */
-    static getInstance() {
-        // インスタンスがなければ生成する、あれば生成しない
-        if (!Score.instance) {
-            Score.instance = new Score();
-        }
-        return Score.instance;
     }
 }
 /**
@@ -72,6 +72,16 @@ class Foods {
         });
     }
     /**
+     * シングルトンパターンのためのメソッド
+     */
+    static getInstance() {
+        // インスタンスがなければ生成する、あれば生成しない
+        if (!Foods.instance) {
+            Foods.instance = new Foods();
+        }
+        return Foods.instance;
+    }
+    /**
      * アクティブなfood要素を取得するゲッタープロパティ。
      */
     get activeElements() {
@@ -98,16 +108,6 @@ class Foods {
             }
         });
         return this._activeElementsScore;
-    }
-    /**
-     * シングルトンパターンのためのメソッド
-     */
-    static getInstance() {
-        // インスタンスがなければ生成する、あれば生成しない
-        if (!Foods.instance) {
-            Foods.instance = new Foods();
-        }
-        return Foods.instance;
     }
 }
 const foods = Foods.getInstance();

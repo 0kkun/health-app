@@ -11,11 +11,14 @@
 
 ## あとからインストールしたもの
 
+```
+$ make work-node
+```
+
 - webpack
 - webpack-cli
 
 ```
-$ work-node
 /usr/src/app# npm install --save-dev webpack webpack-cli
 ```
 
@@ -23,5 +26,5 @@ $ work-node
 - typescript
 
 ```
-npm install --save-dev ts-loader typescript
+/usr/src/app# npm install --save-dev ts-loader typescript
 ```

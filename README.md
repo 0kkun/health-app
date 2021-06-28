@@ -2,7 +2,7 @@
 ## 概要
 健康管理App
 
-## 参考記事
+## 環境構築参考記事
 
 > https://qiita.com/reflet/items/538753d5dcf3560567a9
 
@@ -10,6 +10,8 @@
 ローカルサーバ：http://localhost:8080
 
 ## あとからインストールしたもの
+
+###  実行場所
 
 ```
 $ make work-node

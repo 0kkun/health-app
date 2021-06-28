@@ -8,5 +8,6 @@ module.exports = {
         filename: 'bundle.js', // 出力後のファイル名
         path: path.resolve(__dirname, 'html', 'js', 'dist') //　出力先。絶対パスで指定する
     },
-    mode: 'production'
+    mode: 'production',
+    devtool: 'inline-source-map'
 }

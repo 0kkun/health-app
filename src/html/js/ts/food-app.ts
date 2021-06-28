@@ -16,7 +16,7 @@ class Food {
     clickEventHandler() {
         // toggleは、指定のクラスがあった場合は消す、なかったら付ける処理。
         // 関数の中でthisを使う場合は正しいthisを指し示さないので、bindを使う
-        this.element.classList.toggle('good--active');
+        this.element.classList.toggle('food--active');
     }
 }
 

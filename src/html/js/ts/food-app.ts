@@ -1,7 +1,24 @@
+interface ScoreInterface {
+    readonly totalScore: number;
+    render(): void;
+}
+
+interface FoodInterface {
+    element: HTMLDivElement;
+    clickEventHandler(): void;
+}
+
+interface FoodsInterface {
+    elements: NodeListOf<HTMLDivElement>;
+    readonly activeElements: HTMLDivElement[];
+    readonly activeElementsScore: number[];
+}
+
+
 /**
  * 健康スコアを表すクラス
  */
-class Score {
+class Score implements ScoreInterface {
     // スコアは1つのインスタンスだけにする。毎回newするのはだめ。シングルトンパターン
     private static instance: Score;
 
@@ -40,7 +57,7 @@ class Score {
 /**
  * 　食べ物単体を表すクラス
  */
-class Food {
+class Food implements FoodInterface {
     constructor(public element: HTMLDivElement) {
         // bind：この関数の中で使用されるthisは、このFoodクラス内のthisだよって宣言できる
         element.addEventListener('click', this.clickEventHandler.bind(this));
@@ -66,7 +83,7 @@ class Food {
 /**
  * 食べ物全般を表すクラス
  */
-class Foods {
+class Foods implements FoodsInterface{
     // シングルトンパターンのための宣言。
     private static instance : Foods;
     // クラスがfoodのdomを取得する。<HTMLDivElement>とすることでdivタグの要素を取得できる

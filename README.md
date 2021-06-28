@@ -9,3 +9,12 @@
 ## メモ
 ローカルサーバ：http://localhost:8080
 
+## あとからインストールしたもの
+
+- webpack
+- webpack-cli
+
+```
+$ work-node
+/usr/src/app# npm install --save-dev webpack webpack-cli
+```

@@ -3,11 +3,23 @@
 const path = require('path'); 
 
 module.exports = {
-    entry: './html/js/dist/main.js', // 読み込むメインのファイル
+    entry: './html/js/ts/food-app/main.ts', // 読み込むメインのファイル
     output: {
         filename: 'bundle.js', // 出力後のファイル名
         path: path.resolve(__dirname, 'html', 'js', 'dist') //　出力先。絶対パスで指定する
     },
     mode: 'production',
-    devtool: 'inline-source-map'
+    devtool: 'inline-source-map',
+    // typescriptのコンパイル
+    module: {
+        rules: [{
+            test: /\.ts$/,      // どういうファイル名のものに適用するか
+            use: 'ts-loader',
+            exclude: /node_modules/
+        }]
+    },
+    // 拡張子がなかったらつけてあげるオプション。importとexportを解決するため
+    resolve: {
+        extensions: ['.ts', '.js']
+    }
 }

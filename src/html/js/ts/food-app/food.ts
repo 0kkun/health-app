@@ -1,5 +1,5 @@
-import { FoodInterface } from "./interface.js";
-import { Score } from "./score.js";
+import { FoodInterface } from "./interface";
+import { Score } from "./score";
 
 /**
  * 　食べ物単体を表すクラス

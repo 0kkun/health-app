@@ -1,5 +1,5 @@
-import { ScoreInterface } from "./interface.js";
-import { Foods } from "./foods.js";
+import { ScoreInterface } from "./interface";
+import { Foods } from "./foods";
 
 /**
  * 健康スコアを表すクラス

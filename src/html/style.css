@@ -32,6 +32,7 @@ body {
 }
 .food--active {
     opacity: 1;
+    background-color: aquamarine;
 }
 .food__name {
     cursor: pointer;

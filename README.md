@@ -28,3 +28,9 @@ $ make work-node
 ```
 /usr/src/app# npm install --save-dev ts-loader typescript
 ```
+
+- clean-webpack-plugin (コンパイルする際に、一旦今あるjsファイルを削除してくれる)
+
+```
+/usr/src/app# npm install --save-dev clean-webpack-plugin
+```
